@@ -1,0 +1,137 @@
+body {
+    background-color: #F0F0F0;
+}
+#app {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+#video {
+    background-color: #000000;
+    transform: rotate(0deg);
+    width: 940px;
+    height: 620px;
+    position: relative;
+}
+#canvas {
+    display: none;
+}
+li {
+    display: inline;
+    padding: 5px;
+}
+div.form-group button{
+    padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#478bf9;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
+    
+
+}
+
+div.form-group2 button{
+    padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#478bf9;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
+    
+
+}
+
+div.form-group3 button{
+    padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#5947f9;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
+    
+
+}
+
+div.form-group3 button:focus{
+    padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#47f982;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
+ 
+}
+
+
+
+
+
+
+.divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
+.divider2{
+    width:18px;
+    height:auto;
+    display:inline-block;
+}
+
+legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+fieldset{
+    
+    width: 700px;
+    margin:auto;
+  }
+
+ #box1{
+    width: 140px;
+    height: 140px;
+    color: white;
+    z-index: 1;
+    position: absolute;
+    top:30px;
+    right: 58%;
+    border: 10px solid green;
+    padding: 50px;
+ 
+   
+}
+#box2{
+    width: 140px;
+    height: 140px;
+    color: white;
+    z-index: 1;
+    position: absolute;
+    top:30px;
+    right: 28%;
+    border: 10px solid blue;
+    padding: 50px;
+   
+   
+}
+
+
+
+
+
+  
+
+  
+
+  
