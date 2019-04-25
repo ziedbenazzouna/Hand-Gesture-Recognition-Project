@@ -8,6 +8,15 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 export class AppComponent implements OnInit {
 
+  private _minutes: number = 0;
+  private _secondes: number = 0;
+  private _milliseconds: number = 0;
+  private _totalSecondes: number = 0;
+  private _timer;
+  
+
+
+
 
      toggle1 = true;
      toggle2 = true;
@@ -24,6 +33,9 @@ export class AppComponent implements OnInit {
      showfirst4=false;
      showfirst5=false;
      showfirst6=false;
+     showfirst7=false;
+     showfirst8=false;
+     showfirst9=false;
      
 
     
@@ -112,6 +124,35 @@ chooseEmoNumber2(job) {
     this.showfirst6=true;
     
   }
+
+  start()
+  {
+    this.showfirst7=true;
+
+    if (!this.toggle7)
+    {
+    this.showfirst8=true;
+    this.showfirst9=true;
+  }
+  else
+  {
+    this.showfirst8=true;
+    this.showfirst9=false;
+  }
+    this._timer = setInterval(() => {
+      this._minutes = Math.floor(++this._totalSecondes / 60);
+      this._secondes = (this._totalSecondes - this._minutes * 60) ;
+     
+      
+    }, 1000);
+
+    
+    }
+
+    stop() {
+      clearInterval(this._timer);
+    }
+  
 
   
     

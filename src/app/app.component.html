@@ -1,6 +1,14 @@
 
 <div id="app">
-  
+
+    <div *ngIf="showfirst8" id="boxScore1">
+        <h1>Score</h1>
+      <h1>0</h1>
+    </div>
+    <div *ngIf="showfirst9" id="boxScore2">
+        <h1>Score</h1>
+        <h1>0</h1>
+    </div>
         <fieldset>
                 <legend>Choisir les nombre de joueurs</legend>
         <div class="form-group">
@@ -48,16 +56,23 @@
                   <br/>
                   <div class="form-group3">
                   
-                        <button    type="submit"   >Commencer</button>
+                        <button (click)="start()"   type="submit"   >Commencer</button>
                         
                         
                       </div>
+                      <br/>
+                      <div *ngIf="showfirst7">
+                         
+                          <span class="label label-primary">{{_secondes}}</span> secondes
+                          <span class="label label-primary">{{_milliseconds}}</span> milliseconds
+                      </div>
+
+                      
+                      
                   
                   </fieldset>
                   <br/>
-   
 
-  
 
     <div style="position: relative;">
         <video #video id="video" autoplay playsinline ></video>
