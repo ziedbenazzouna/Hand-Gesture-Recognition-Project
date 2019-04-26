@@ -67,6 +67,9 @@ div.form-group3 button:focus{
  
 }
 
+div.form-group4{
+    display : inline-block;
+}
 
 
 
@@ -105,10 +108,10 @@ fieldset{
     color: white;
     z-index: 1;
     position: absolute;
-    top:30px;
+    top:150px;
     right: 58%;
-    border: 10px solid green;
-    padding: 50px;
+    border: 5px solid green;
+    padding: 0px;
  
    
 }
@@ -118,10 +121,10 @@ fieldset{
     color: white;
     z-index: 1;
     position: absolute;
-    top:30px;
-    right: 28%;
-    border: 10px solid blue;
-    padding: 50px;
+    top:150px;
+    right: 35%;
+    border: 5px solid blue;
+    padding: 0px;
    
    
 }

@@ -13,9 +13,10 @@ export class AppComponent implements OnInit {
   private _milliseconds: number = 0;
   private _totalSecondes: number = 0;
   private _timer;
+ 
   
 
-
+  imagesList = [];
 
 
      toggle1 = true;
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
      toggle5 = true;
      toggle6 = true;
      toggle7 = true;
+     toggle8 = true;
 
      showfirst=false;
      showfirst1=false;
@@ -48,11 +50,10 @@ chooseEmoNumber1(job) {
     this.toggle3 = true;
     this.toggle4 = true;
     this.toggle5 = true;
-    this.showfirst=true;
-    this.showfirst1=false;
-    this.showfirst2=false;
-    this.showfirst3=false;
-    this.showfirst4=false;
+    if (!this.toggle6 || !this.toggle7)
+    {
+    this.toggle8 = false;
+  }
   
 }
 chooseEmoNumber2(job) {
@@ -61,12 +62,11 @@ chooseEmoNumber2(job) {
     this.toggle3 = true;
     this.toggle4 = true;
     this.toggle5 = true;
-    this.showfirst=true;
-    this.showfirst1=true;
-    this.showfirst2=false;
-    this.showfirst3=false;
-    this.showfirst4=false;
-    
+    if (!this.toggle6 || !this.toggle7)
+    {
+    this.toggle8 = false;
+  }
+
   }
   chooseEmoNumber3(job) {
     this.toggle3 = !this.toggle3;
@@ -74,11 +74,10 @@ chooseEmoNumber2(job) {
     this.toggle2 = true;
     this.toggle4 = true;
     this.toggle5 = true;
-    this.showfirst=true;
-    this.showfirst1=true;
-    this.showfirst2=true;
-    this.showfirst3=false;
-    this.showfirst4=false;
+    if (!this.toggle6 || !this.toggle7)
+    {
+    this.toggle8 = false;
+  }
     
   }
   chooseEmoNumber4(job) {
@@ -87,11 +86,10 @@ chooseEmoNumber2(job) {
     this.toggle3 = true;
     this.toggle2 = true;
     this.toggle5 = true;
-    this.showfirst=true;
-    this.showfirst1=true;
-    this.showfirst2=true;
-    this.showfirst3=true;
-    this.showfirst4=false;
+    if (!this.toggle6 || !this.toggle7)
+    {
+    this.toggle8 = false;
+  }
     
   }
   chooseEmoNumber5(job) {
@@ -100,11 +98,10 @@ chooseEmoNumber2(job) {
     this.toggle3 = true;
     this.toggle4 = true;
     this.toggle2 = true;
-    this.showfirst=true;
-    this.showfirst1=true;
-    this.showfirst2=true;
-    this.showfirst3=true;
-    this.showfirst4=true;
+    if (!this.toggle6 || !this.toggle7)
+    {
+    this.toggle8 = false;
+  }
     
   }
 
@@ -113,6 +110,10 @@ chooseEmoNumber2(job) {
     this.toggle7 = true;
     this.showfirst5=true;
     this.showfirst6=false;
+    if (!this.toggle1 || !this.toggle2 || !this.toggle3 || !this.toggle4 || !this.toggle5)
+    {
+    this.toggle8 = false;
+  }
     
   }
 
@@ -122,11 +123,21 @@ chooseEmoNumber2(job) {
     
     this.showfirst5=true;
     this.showfirst6=true;
+    if (!this.toggle1 || !this.toggle2 || !this.toggle3 || !this.toggle4 || !this.toggle5)
+    {
+    this.toggle8 = false;
+  }
     
   }
 
   start()
   {
+    
+
+
+
+
+    this.toggle8 = true;
     this.showfirst7=true;
 
     if (!this.toggle7)
@@ -139,12 +150,77 @@ chooseEmoNumber2(job) {
     this.showfirst8=true;
     this.showfirst9=false;
   }
+  
+if ( !this.toggle1)
+{
+ 
+  for (let i = 0; i < 1; i++) {
+    let j = Math.floor(Math.random() * 8) + 1 
+    const url = 'assets/images/' + (j)+ '.png';
+    this.imagesList[i] = {
+      url: url,
+      show: false
+    }
+}
+}
+if (!this.toggle2)
+{
+  for (let i = 0; i < 3; i++) {
+    let j = Math.floor(Math.random() * 8) + 1 
+    const url = 'assets/images/' + (j +1)+ '.png';
+    this.imagesList[i] = {
+      url: url,
+      show: false
+  }
+}
+    
+}
+
+if (!this.toggle3)
+{
+  let i= this.imagesList[Math.floor(Math.random()*DataTransferItemList.length)]
+  for ( i = 0; i < 5; i++) {
+    let j = Math.floor(Math.random() * 8) + 1 
+    const url = 'assets/images/' + (j +1)+ '.png';
+    this.imagesList[i] = {
+      url: url,
+      show: false
+  }
+}
+}
+if (!this.toggle4)
+{
+  let i= this.imagesList[Math.floor(Math.random()*DataTransferItemList.length)]
+  for ( i = 0; i <7; i++) {
+    let j = Math.floor(Math.random() * 8) + 1 
+    const url = 'assets/images/' + (j +1)+ '.png';
+    this.imagesList[i] = {
+      url: url,
+      show: false
+  }
+}
+}
+if (!this.toggle5)
+{
+  let i= this.imagesList[Math.floor(Math.random()*DataTransferItemList.length)]
+  for ( i = 0; i < 9; i++) {
+    let j = Math.floor(Math.random() * 8) + 1 
+    const url = 'assets/images/' + (j +1)+ '.png';
+    this.imagesList[i] = {
+      url: url,
+      show: false
+  }
+}
+}
+
     this._timer = setInterval(() => {
       this._minutes = Math.floor(++this._totalSecondes / 60);
       this._secondes = (this._totalSecondes - this._minutes * 60) ;
-     
+       
       
     }, 1000);
+    
+
 
     
     }
@@ -152,9 +228,9 @@ chooseEmoNumber2(job) {
     stop() {
       clearInterval(this._timer);
     }
-  
 
-  
+    
+   
     
     @ViewChild("video")
     public video: ElementRef;
@@ -183,9 +259,9 @@ chooseEmoNumber2(job) {
         }
     }
 
-    public capture() {
+   /*  public capture() {
         var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
         this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
-    }
+    } */
 
 }

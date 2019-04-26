@@ -33,8 +33,12 @@
                     
                   </div>
                   <br/>
-                  <div class="form-group4">
-                    <img  src="assets/images/1.png" *ngIf="showfirst4"  alt="image" height="50px" width="50px">
+                  <div class="form-group4" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
+                      <ng-container *ngIf="image.show">
+                          <img src={{image.url}} alt="image" height="50px" width="50px">
+                          <div class="divider2"></div>
+                        </ng-container>
+                    <!-- <img  src="assets/images/1.png" *ngIf="showfirst4"  alt="image" height="50px" width="50px">
                     <div class="divider2"></div>
                     <img  src="assets/images/2.png" *ngIf="showfirst3" alt="image" height="50px" width="50px">
                     <div class="divider2"></div>
@@ -51,20 +55,20 @@
                     <div class="divider2"></div>
                     <img  src="assets/images/8.png" *ngIf="showfirst3" alt="image" height="50px" width="50px">
                     <div class="divider2"></div>
-                    <img  src="assets/images/0.png" *ngIf="showfirst4" alt="image" height="50px" width="50px">
+                    <img  src="assets/images/0.png" *ngIf="showfirst4" alt="image" height="50px" width="50px"> -->
                   </div>
                   <br/>
                   <div class="form-group3">
                   
-                        <button (click)="start()"   type="submit"   >Commencer</button>
+                        <button (click)="start()" [disabled]="toggle8"   type="submit"   >Commencer</button>
                         
                         
                       </div>
                       <br/>
                       <div *ngIf="showfirst7">
-                         
+                        <span class="label label-primary">{{_minutes}}</span> minutes
                           <span class="label label-primary">{{_secondes}}</span> secondes
-                          <span class="label label-primary">{{_milliseconds}}</span> milliseconds
+                         
                       </div>
 
                       
@@ -76,8 +80,8 @@
 
     <div style="position: relative;">
         <video #video id="video" autoplay playsinline ></video>
-        <div id="box1" *ngIf="showfirst5" ></div>
-        <div id="box2" *ngIf="showfirst6" ></div>
+        <img id="box1" *ngIf="showfirst5" >
+        <img id="box2" *ngIf="showfirst6" >
 
         
         
