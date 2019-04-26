@@ -70,6 +70,16 @@ div.form-group3 button:focus{
 div.form-group4{
     display : inline-block;
 }
+div.form-group5{
+    display : inline-block;    
+    position: absolute;
+    right: 52%;
+    margin: 0 auto;
+    
+}
+
+
+
 
 
 
@@ -82,6 +92,11 @@ div.form-group4{
 }
 .divider2{
     width:18px;
+    height:auto;
+    display:inline-block;
+}
+.divider3{
+    width:36px;
     height:auto;
     display:inline-block;
 }
@@ -98,7 +113,7 @@ label {
 
 fieldset{
     
-    width: 700px;
+    width: 900px;
     margin:auto;
   }
 
@@ -110,7 +125,7 @@ fieldset{
     position: absolute;
     top:150px;
     right: 58%;
-    border: 5px solid green;
+    border: 5px solid red;
     padding: 0px;
  
    
@@ -137,10 +152,10 @@ fieldset{
     z-index: 1;
     position: absolute;
     top:65px;
-    right: 80%;
+    right: 85%;
     border: 3px solid black;
     padding: 50px;
-    color: green;
+    color: red;
  
    
 }
@@ -151,7 +166,7 @@ fieldset{
     z-index: 1;
     position: absolute;
     top:65px;
-    right: 10%;
+    right: 5%;
     border: 3px solid black;
     padding: 50px;
     color: blue;

@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   
 
   imagesList = [];
+  imagesList1 = [];
 
 
      toggle1 = true;
@@ -38,6 +39,19 @@ export class AppComponent implements OnInit {
      showfirst7=false;
      showfirst8=false;
      showfirst9=false;
+
+     showfirst10=true;
+     showfirst11=true;
+     showfirst12=true;
+     showfirst13=true;
+     showfirst14=true;
+     showfirst15=true;
+     showfirst16=true;
+     showfirst17=true;
+     showfirst18=true;
+     showfirst19=true;
+
+   
      
 
     
@@ -101,6 +115,7 @@ chooseEmoNumber2(job) {
     if (!this.toggle6 || !this.toggle7)
     {
     this.toggle8 = false;
+    
   }
     
   }
@@ -133,7 +148,16 @@ chooseEmoNumber2(job) {
   start()
   {
     
-
+    this.showfirst10=false;
+    this.showfirst11=false;
+    this.showfirst12=false;
+    this.showfirst13=false;
+    this.showfirst14=false;
+    this.showfirst15=false;
+    this.showfirst16=false;
+    this.showfirst17=false;
+    this.showfirst18=false;
+    this.showfirst19=false;
 
 
 
@@ -162,6 +186,7 @@ if ( !this.toggle1)
       show: false
     }
 }
+
 }
 if (!this.toggle2)
 {
@@ -173,7 +198,18 @@ if (!this.toggle2)
       show: false
   }
 }
-    
+
+  for ( let i = 0; i <3; i++) {
+    setTimeout(()=>{
+    const url = 'assets/images/' + (10+i)+ '.png';
+    this.imagesList1[i] = {
+      url: url,
+      show: false
+  }
+},(i+1)*2000);
+
+}
+
 }
 
 if (!this.toggle3)
@@ -220,7 +256,7 @@ if (!this.toggle5)
       
     }, 1000);
     
-
+       
 
     
     }
@@ -259,9 +295,5 @@ if (!this.toggle5)
         }
     }
 
-   /*  public capture() {
-        var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
-        this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
-    } */
-
+   
 }

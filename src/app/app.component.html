@@ -10,64 +10,65 @@
         <h1>0</h1>
     </div>
         <fieldset>
-                <legend>Choisir les nombre de joueurs</legend>
+                <legend *ngIf="showfirst19">Choisir les nombre de joueurs</legend>
+                <legend *ngIf="!showfirst19">let's play !</legend>
         <div class="form-group">
-                <button type="submit" [style.background-color]="toggle6 ? 'blue' : 'red'" (click)="choosePlayer1()"  class="btn btn-lg btn-block">1 joueur</button>
+                <button type="submit" *ngIf="showfirst10" [style.background-color]="toggle6 ? 'blue' : 'red'" (click)="choosePlayer1()"  class="btn btn-lg btn-block">1 joueur</button>
                 <div class="divider"></div>
-                <button type="submit" [style.background-color]="toggle7 ? 'blue' : 'red'" (click)="choosePlayer2()" class="btn btn-lg btn-block">2 joueurs</button>
+                <button type="submit" *ngIf="showfirst11" [style.background-color]="toggle7 ? 'blue' : 'red'" (click)="choosePlayer2()" class="btn btn-lg btn-block">2 joueurs</button>
                 
               </div>
 <br/>
-<label>Choisir les nombre de émoticônes</label>
+<label *ngIf="showfirst17">Choisir les nombre de émoticônes</label>
               <div class="form-group2">
                   
-                    <button [style.background-color]="toggle1 ? 'blue' : 'red'" name="toggle1" (click)="chooseEmoNumber1()" type="submit"  >1</button>
+                    <button *ngIf="showfirst12"  [style.background-color]="toggle1 ? 'blue' : 'red'" name="toggle1" (click)="chooseEmoNumber1()" type="submit"  >1</button>
                     <div  class="divider2"></div>
-                    <button [style.background-color]="toggle2 ? 'blue' : 'red'" (click)="chooseEmoNumber2()" type="submit"  >3 </button>
+                    <button *ngIf="showfirst13" [style.background-color]="toggle2 ? 'blue' : 'red'" (click)="chooseEmoNumber2()" type="submit"  >3 </button>
                     <div class="divider2"></div>
-                    <button [style.background-color]="toggle3 ? 'blue' : 'red'" (click)="chooseEmoNumber3()" type="submit"  >5 </button>
+                    <button *ngIf="showfirst14" [style.background-color]="toggle3 ? 'blue' : 'red'" (click)="chooseEmoNumber3()" type="submit"  >5 </button>
                     <div class="divider2"></div>
-                    <button [style.background-color]="toggle4 ? 'blue' : 'red'" (click)="chooseEmoNumber4()" type="submit"  >7 </button>
+                    <button *ngIf="showfirst15" [style.background-color]="toggle4 ? 'blue' : 'red'" (click)="chooseEmoNumber4()" type="submit"  >7 </button>
                     <div class="divider2"></div>
-                    <button [style.background-color]="toggle5 ? 'blue' : 'red'" (click)="chooseEmoNumber5()" type="submit"  >9</button>
+                    <button *ngIf="showfirst16" [style.background-color]="toggle5 ? 'blue' : 'red'" (click)="chooseEmoNumber5()" type="submit"  >9</button>
                     
                   </div>
                   <br/>
+                  <table  >
+                      <tr>
+                        <td>
+                  <div class="form-group5" *ngFor="let image of imagesList1" (deferLoad)="image.show = true">
+                   
+                            <img  *ngIf="image.show"  src="{{image.url}}"   alt="image" height="25px" width="25px">
+                            <div class="divider3"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      </table>
+                 
+               
+                <br/>
                   <div class="form-group4" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
+                      
                       <ng-container *ngIf="image.show">
-                          <img src={{image.url}} alt="image" height="50px" width="50px">
+                        
+                          <img src={{image.url}} alt="image" height="75px" width="75px">
                           <div class="divider2"></div>
                         </ng-container>
-                    <!-- <img  src="assets/images/1.png" *ngIf="showfirst4"  alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/2.png" *ngIf="showfirst3" alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/9.png" *ngIf="showfirst2" alt="image" height="50px" width="50px">
-                   
-                    <div class="divider2"></div>
-                    <img  src="assets/images/4.png" *ngIf="showfirst1" alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/5.png" *ngIf="showfirst" alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/6.png" *ngIf="showfirst1" alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/7.png" *ngIf="showfirst2" alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/8.png" *ngIf="showfirst3" alt="image" height="50px" width="50px">
-                    <div class="divider2"></div>
-                    <img  src="assets/images/0.png" *ngIf="showfirst4" alt="image" height="50px" width="50px"> -->
+                    
+                    
                   </div>
                   <br/>
                   <div class="form-group3">
                   
-                        <button (click)="start()" [disabled]="toggle8"   type="submit"   >Commencer</button>
+                        <button *ngIf="showfirst18" (click)="start()" [disabled]="toggle8"   type="submit"   >Commencer</button>
                         
                         
                       </div>
                       <br/>
-                      <div *ngIf="showfirst7">
-                        <span class="label label-primary">{{_minutes}}</span> minutes
-                          <span class="label label-primary">{{_secondes}}</span> secondes
+                      <div class="form-group4" *ngIf="showfirst7">
+                       <h2> <span class="label label-primary">{{_minutes}}</span> minutes
+                        <span class="label label-primary">{{_secondes}}</span> secondes</h2>
                          
                       </div>
 
