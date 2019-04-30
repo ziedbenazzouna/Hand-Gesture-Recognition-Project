@@ -72,23 +72,18 @@
                          
                       </div>
 
-                      
-                      
-                  
                   </fieldset>
                   <br/>
-
-
+                
+                 
+                 
     <div style="position: relative;">
         <video #video id="video" autoplay playsinline ></video>
-        <img id="box1" *ngIf="showfirst5" >
-        <img id="box2" *ngIf="showfirst6" >
-
-        
-        
+        <img id="box1" (newImage)="predict($event)"  *ngIf="showfirst5">
+        <img id="box2" (newImage)="predict($event)"  *ngIf="showfirst6">
       </div>
 
-
+     
   
  
 </div>

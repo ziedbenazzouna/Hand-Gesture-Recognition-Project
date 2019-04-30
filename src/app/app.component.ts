@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import * as tf from '@tensorflow/tfjs'
+
 
 @Component({
     selector: 'app-root',
@@ -7,6 +9,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
+
+  model : tf.Model;
+  predictions: any;
+  predictedNumber: string;
 
   private _minutes: number = 0;
   private _secondes: number = 0;
@@ -103,7 +109,7 @@ chooseEmoNumber2(job) {
     if (!this.toggle6 || !this.toggle7)
     {
     this.toggle8 = false;
-  }
+    }
     
   }
   chooseEmoNumber5(job) {
@@ -281,9 +287,30 @@ if (!this.toggle5)
     }
 
     public ngOnInit() { 
+      console.log("init")
+        this.loadModel();
         
     }
 
+   async loadModel(){
+   this.model = await tf.loadModel('/assets/model.json');
+      
+    }
+    async predict(imageData: ImageData) {
+        console.log("debut")
+      const pred = await tf.tidy(()=>{
+
+        let img = tf.fromPixels(imageData, 1);
+        img = img.reshape([140, 140,1]);
+        img = tf.cast(img, 'float32');
+        const output = this.model.predict(img) as any;
+        // Save predictions on the component
+        this.predictions = Array.from(output.dataSync());
+
+       
+      })
+      console.log("fin")
+    }
     
 
     public ngAfterViewInit() {
