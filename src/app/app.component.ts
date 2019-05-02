@@ -11,7 +11,7 @@ import * as tf from '@tensorflow/tfjs'
 export class AppComponent implements OnInit {
 
   model : tf.Model;
-  predictions: any;
+  predictions : any;
   predictedNumber: string;
 
   private _minutes: number = 0;
@@ -288,25 +288,26 @@ if (!this.toggle5)
 
     public ngOnInit() { 
       console.log("init")
-        this.loadModel();
-        
+        this.loadModel();    
     }
 
-   async loadModel(){
-   this.model = await tf.loadModel('/assets/model.json');
-      
+   async loadModel() {
+    
+     this.model  = await tf.loadModel('/assets/model.json');     
+     
     }
+
     async predict(imageData: ImageData) {
         console.log("debut")
-      const pred = await tf.tidy(()=>{
-
-        let img = tf.fromPixels(imageData, 1);
-        img = img.reshape([140, 140,1]);
+        const pred = await tf.tidy(()=>{
+        let img = tf.fromPixels(imageData,1);
+        img = img.reshape([1,140, 140]);
         img = tf.cast(img, 'float32');
         const output = this.model.predict(img) as any;
         // Save predictions on the component
         this.predictions = Array.from(output.dataSync());
 
+        
        
       })
       console.log("fin")
