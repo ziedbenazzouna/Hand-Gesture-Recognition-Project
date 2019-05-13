@@ -79,11 +79,11 @@
                  
     <div style="position: relative;">
         <video #video id="video" autoplay playsinline ></video>
-        <img src="assets/images/img1.jpg" id="box1" (newImage)="predict($event)"  *ngIf="showfirst5">
-        <img src="assets/images/img2.jpg" id="box2" (newImage)="predict($event)"  *ngIf="showfirst6">
+        <img #imageInput src="assets/images/img1.jpg"  id="box1" (load)="predict(imageInput)"  *ngIf="showfirst5">
+      <img  #imageInput  id="box2" (load)="predict(imageInput)"  *ngIf="showfirst6">
       </div>
 
-     
+      
   
  
 </div>

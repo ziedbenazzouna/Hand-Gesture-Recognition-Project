@@ -19,8 +19,10 @@ export class AppComponent implements OnInit {
   private _milliseconds: number = 0;
   private _totalSecondes: number = 0;
   private _timer;
+
+  image : any;
  
-  
+
 
   imagesList = [];
   imagesList1 = [];
@@ -271,7 +273,7 @@ if (!this.toggle5)
       clearInterval(this._timer);
     }
 
-    
+ 
    
     
     @ViewChild("video")
@@ -292,24 +294,32 @@ if (!this.toggle5)
     }
 
    async loadModel() {
-    
+    console.log("1")
      this.model  = await tf.loadModel('/assets/model.json');     
-     
+     console.log("2")
     }
 
-    async predict(imageData: ImageData) {
+    async predict(imageData: HTMLImageElement) {
+      
+     
+      console.log(imageData)
         console.log("debut")
-        const pred = await tf.tidy(()=>{
-        let img = tf.fromPixels(imageData,1);
-        img = img.reshape([1,140, 140]);
-        img = tf.cast(img, 'float32');
-        const output = this.model.predict(img) as any;
-        // Save predictions on the component
-        this.predictions = Array.from(output.dataSync());
 
+        const pred = await tf.tidy(()=>{
+          
+        let img = tf.fromPixels(imageData,1);
+        console.log(img);
+        img = img.reshape([1,140,140,1]); 
+        console.log("reshape")
+        img = tf.cast(img, 'float32');
+        console.log("cast")
+        console.log(img);
+        const output = this.model.predict(img) as any;
+        console.log(output)
+        // Save predictions on the component 
+        this.predictions = Array.from(output.dataSync());
         
-       
-      })
+})
       console.log("fin")
     }
     
