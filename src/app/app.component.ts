@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import * as tf from '@tensorflow/tfjs'
+import * as tf from '@tensorflow/tfjs';
+
 
 
 @Component({
@@ -26,6 +27,29 @@ export class AppComponent implements OnInit {
 
   imagesList = [];
   imagesList1 = [];
+  array1=[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  array2=[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  array3=[0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+  array4=[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+  array5=[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+  array6=[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+  array7=[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+  array8=[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+  array9=[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
+  array10=[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+  array11=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+
+  array111=[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  array12=[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  array13=[0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+  array14=[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+  array15=[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+  array16=[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+  array17=[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+  array18=[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+  array19=[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
+  array20=[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+  array21=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
 
 
      toggle1 = true;
@@ -58,6 +82,35 @@ export class AppComponent implements OnInit {
      showfirst17=true;
      showfirst18=true;
      showfirst19=true;
+
+
+     showfirst20=false;
+     showfirst21=false;
+     showfirst22=false;
+     showfirst23=false;
+     showfirst24=false;
+     showfirst25=false;
+     showfirst26=false;
+     showfirst27=false;
+     showfirst28=false;
+     showfirst29=false;
+     showfirst30=false;
+
+     showfirst31=false;
+     showfirst32=false;
+     showfirst33=false;
+     showfirst34=false;
+     showfirst35=false;
+     showfirst36=false;
+     showfirst37=false;
+     showfirst38=false;
+     showfirst39=false;
+     showfirst40=false;
+     showfirst41=false;
+
+
+     showleft=false;
+     showright=false;
 
    
      
@@ -265,22 +318,23 @@ if (!this.toggle5)
     }, 1000);
     
        
-
+    
     
     }
 
+
+
+    
     stop() {
       clearInterval(this._timer);
     }
 
  
-   
     
     @ViewChild("video")
     public video: ElementRef;
 
-    @ViewChild("canvas")
-    public canvas: ElementRef;
+    
 
     public captures: Array<any>;
 
@@ -295,9 +349,11 @@ if (!this.toggle5)
 
    async loadModel() {
     console.log("1")
-     this.model  = await tf.loadModel('/assets/model.json');     
+    this.model = await tf.loadModel('./assets/model.json');     
      console.log("2")
     }
+
+    
 
     async predict(imageData: HTMLImageElement) {
       
@@ -307,9 +363,10 @@ if (!this.toggle5)
 
         const pred = await tf.tidy(()=>{
           
-        let img = tf.fromPixels(imageData,1);
+        let img = tf.fromPixels(imageData,3);
         console.log(img);
-        img = img.reshape([1,140,140,1]); 
+        img = tf.reverse(img, -1)
+        img = img.reshape([1,140,140,3]); 
         console.log("reshape")
         img = tf.cast(img, 'float32');
         console.log("cast")
@@ -318,7 +375,145 @@ if (!this.toggle5)
         console.log(output)
         // Save predictions on the component 
         this.predictions = Array.from(output.dataSync());
-        
+        console.log(this.predictions)
+    
+        if (this.arraysEqual(this.array1,this.predictions))
+        {      
+          console.log("fffff")
+         
+          this.showleft=false;
+          this.showfirst20=true;
+        }
+        else if (this.arraysEqual(this.array2,this.predictions))
+        {
+         
+           this.showleft=false;
+          this.showfirst21=true;
+        }
+        else if (this.arraysEqual(this.array3,this.predictions))
+        {
+          this.showleft=false;         
+          this.showfirst22=true;
+        }
+        else if (this.arraysEqual(this.array4,this.predictions))
+        {
+          console.log("first")
+         
+          this.showleft=false;
+          this.showfirst23=true;
+          console.log("end")
+        }
+        else if (this.arraysEqual(this.array5,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst24=true;
+        }
+        else if (this.arraysEqual(this.array6,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst25=true;
+        }
+        else if (this.arraysEqual(this.array7,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst26=true;
+        }
+        else if (this.arraysEqual(this.array8,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst27=true;
+        }
+        else if (this.arraysEqual(this.array9,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst28=true;
+        }
+        else if (this.arraysEqual(this.array10,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst29=true;
+        }
+      
+        else if (this.arraysEqual(this.array11,this.predictions))
+        {
+          this.showleft=false;
+          this.showfirst30=true;
+        }
+
+
+        if (this.arraysEqual(this.array111,this.predictions))
+        {    
+          console.log("first1")
+          this.showright=true; 
+            
+          this.showfirst31=true;
+          console.log("end1")
+        }
+        else if (this.arraysEqual(this.array12,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst32=true;
+        }
+        else if (this.arraysEqual(this.array13,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst33=true;
+        }
+        else if (this.arraysEqual(this.array14,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst34=true;
+        }
+        else if (this.arraysEqual(this.array15,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst35=true;
+        }
+        else if (this.arraysEqual(this.array16,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst36=true;
+        }
+        else if (this.arraysEqual(this.array17,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst37=true;
+        }
+        else if (this.arraysEqual(this.array18,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst38=true;
+        }
+        else if (this.arraysEqual(this.array19,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst39=true;
+        }
+        else if (this.arraysEqual(this.array20,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst40=true;
+        }
+      
+        else if (this.arraysEqual(this.array21,this.predictions))
+        {
+          this.showleft=false;
+          this.showright=true; 
+          this.showfirst41=true;
+        }
+
+
+      
+      
 })
       console.log("fin")
     }
@@ -333,5 +528,21 @@ if (!this.toggle5)
         }
     }
 
+    public arraysEqual(a, b) {
+      if (a === b) return true;
+      if (a == null || b == null) return false;
+      if (a.length != b.length) return false;
+    
+      // If you don't care about the order of the elements inside
+      // the array, you should sort both arrays here.
+      // Please note that calling sort on an array will modify that array.
+      // you might want to clone your array first.
+    
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i] !== b[i]) return false;
+      }
+      return true;
+    }
+    
    
 }
