@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { DrawableDirective } from './drawable.directive';
 import * as tf from '@tensorflow/tfjs';
 
 
@@ -329,7 +330,7 @@ if (!this.toggle5)
       clearInterval(this._timer);
     }
 
- 
+    @ViewChild(DrawableDirective) canvas;
     
     @ViewChild("video")
     public video: ElementRef;
@@ -380,8 +381,8 @@ if (!this.toggle5)
         if (this.arraysEqual(this.array1,this.predictions))
         {      
           console.log("fffff")
-         
-          this.showleft=false;
+         this.showright=false;
+          this.showleft=true;
           this.showfirst20=true;
         }
         else if (this.arraysEqual(this.array2,this.predictions))
@@ -398,8 +399,8 @@ if (!this.toggle5)
         else if (this.arraysEqual(this.array4,this.predictions))
         {
           console.log("first")
-         
-          this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst23=true;
           console.log("end")
         }
