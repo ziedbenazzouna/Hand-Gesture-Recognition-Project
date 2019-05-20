@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DrawableDirective } from './drawable.directive';
 import * as tf from '@tensorflow/tfjs';
+import { image } from '@tensorflow/tfjs';
 
 
 
@@ -356,7 +357,7 @@ if (!this.toggle5)
 
     
 
-    async predict(imageData: HTMLImageElement) {
+    async predict(imageData: ImageData) {
       
      
       console.log(imageData)
@@ -367,6 +368,7 @@ if (!this.toggle5)
         let img = tf.fromPixels(imageData,3);
         console.log(img);
         img = tf.reverse(img, -1)
+        console.log("reverse",img)
         img = img.reshape([1,140,140,3]); 
         console.log("reshape")
         img = tf.cast(img, 'float32');

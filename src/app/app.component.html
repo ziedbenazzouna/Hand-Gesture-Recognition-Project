@@ -89,7 +89,9 @@
                     <img  id="img1"  src="assets/images/8.png"   alt="image" *ngIf="showfirst28 && !showleft  && !showright">
                     <img  id="img1"  src="assets/images/9.png"   alt="image" *ngIf="showfirst29 && !showleft  && !showright">
                     <img  id="img1"  src="assets/images/question.png"   alt="image" *ngIf="showfirst30 && !showleft  && showright">
-                      <video #video id="video" autoplay playsinline ></video>
+                      <video #video id="video" autoplay playsinline >
+                        
+                      </video>
                       <img  id="img2"  src="assets/images/0.png"   alt="image" *ngIf="showfirst31 && showfirst6 && showleft && !showright ">
                       <img  id="img2"  src="assets/images/1.png"   alt="image" *ngIf="showfirst32 && showfirst6 && showleft && !showright">
                       <img  id="img2"  src="assets/images/2.png"   alt="image" *ngIf="showfirst33 && showfirst6 && showleft && !showright">
@@ -102,12 +104,12 @@
                       <img  id="img2"  src="assets/images/9.png"   alt="image" *ngIf="showfirst40 && showfirst6 && showleft && !showright">
                       <img  id="img2"  src="assets/images/question.png"   alt="image" *ngIf="showfirst41 && showleft  && !showright">
                 
-                     <!--  <img #imageInput src="assets/images/img2.jpg"  id="box1" (load)="predict(imageInput)"  *ngIf="showfirst5">
+                      <!-- <img #imageInput src="assets/images/img2.jpg"  id="box1" (load)="predict(imageInput)"  *ngIf="showfirst5">
                       <img  #imageInput src="assets/images/img1.jpg"  id="box2" (load)="predict(imageInput)"  *ngIf="showfirst6"> -->
 
-                       <canvas  drawable id="box1" (newImage)="predict($event)"  *ngIf="showfirst5"></canvas>
+                       <canvas height="140px" width="140px" #imageInput  drawable id="box1" (newImage)="predict(imageInput)"  *ngIf="showfirst5"></canvas>
                       
-                      <canvas  drawable  id="box2" (newImage)="predict($event)"  *ngIf="showfirst6"> </canvas>
+                      <canvas height="140px" width="140px" #imageInput drawable  id="box2" (newImage)="predict(imageInput)"  *ngIf="showfirst6"> </canvas>
                     </div>
 
       
