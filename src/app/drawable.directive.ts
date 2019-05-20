@@ -7,7 +7,7 @@ import {
     EventEmitter,
     OnInit
   } from '@angular/core';
-import { imag } from '@tensorflow/tfjs';
+
   
   @Directive({
     selector: '[drawable]'
@@ -35,6 +35,7 @@ import { imag } from '@tensorflow/tfjs';
     @HostListener('mouseup', ['$event'])
   onUp(e) {
     this.newImage.emit(this.getImgData());
+    console.log(this.getImgData())
   }
   
     getImgData(): ImageData {
@@ -50,10 +51,11 @@ import { imag } from '@tensorflow/tfjs';
        let b = frame.data[i * 4 + 2];
        if (g > 100 && r > 100 && b < 43)
          frame.data[i * 4 + 3] = 0;
+      
      }
-     this.ctx2.putImageData(frame, 0, 0);
+     this.ctx2.putImageData(frame, 0,0);
      console.log(frame);
-     return;
+     return  this.ctx2.getImageData(0, 0, 140, 140);
     
 
     }
