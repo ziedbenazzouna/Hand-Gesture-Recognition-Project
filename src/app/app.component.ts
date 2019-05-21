@@ -113,6 +113,11 @@ export class AppComponent implements OnInit {
 
      showleft=false;
      showright=false;
+     showleft1=false;
+     showright1=false;
+
+
+     show=true;
 
    
      
@@ -186,8 +191,8 @@ chooseEmoNumber2(job) {
   choosePlayer1(job) {
     this.toggle6 = !this.toggle6;
     this.toggle7 = true;
-    this.showfirst5=true;
-    this.showfirst6=false;
+    /* this.showfirst5=true;
+    this.showfirst6=false; */
     if (!this.toggle1 || !this.toggle2 || !this.toggle3 || !this.toggle4 || !this.toggle5)
     {
     this.toggle8 = false;
@@ -199,8 +204,8 @@ chooseEmoNumber2(job) {
     this.toggle7 = !this.toggle7;
     this.toggle6 = true;
     
-    this.showfirst5=true;
-    this.showfirst6=true;
+    /* this.showfirst5=true;
+    this.showfirst6=true; */
     if (!this.toggle1 || !this.toggle2 || !this.toggle3 || !this.toggle4 || !this.toggle5)
     {
     this.toggle8 = false;
@@ -208,7 +213,7 @@ chooseEmoNumber2(job) {
     
   }
 
-  start()
+  start(imageData: ImageData)
   {
     
     this.showfirst10=false;
@@ -222,7 +227,16 @@ chooseEmoNumber2(job) {
     this.showfirst18=false;
     this.showfirst19=false;
 
-
+    if (this.toggle7==true )
+    {
+    this.showfirst5=true;
+    this.showfirst6=false; 
+  }
+  else if ( this.toggle6==true)
+  {
+    this.showfirst5=true;
+    this.showfirst6=true; 
+  }
 
     this.toggle8 = true;
     this.showfirst7=true;
@@ -320,8 +334,8 @@ if (!this.toggle5)
     }, 1000);
     
        
-    
-    
+    this.predict(imageData)
+    this.predict2(imageData)
     }
 
 
@@ -357,7 +371,7 @@ if (!this.toggle5)
 
     
 
-    async predict(imageData: ImageData) {
+    public async predict(imageData: ImageData) {
       
      
       console.log(imageData)
@@ -380,141 +394,213 @@ if (!this.toggle5)
         this.predictions = Array.from(output.dataSync());
         console.log(this.predictions)
     
-        if (this.arraysEqual(this.array1,this.predictions))
+        while (this.show)
+        {
+         if (this.arraysEqual(this.array1,this.predictions))
         {      
           console.log("fffff")
-         this.showright=false;
+          this.showright=false;
           this.showleft=true;
           this.showfirst20=true;
+          this.show=false;
+          
         }
+        
         else if (this.arraysEqual(this.array2,this.predictions))
         {
          
-           this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst21=true;
+          this.show=false;
         }
-        else if (this.arraysEqual(this.array3,this.predictions))
+        else  if (this.arraysEqual(this.array3,this.predictions))
         {
-          this.showleft=false;         
+          this.showright=false;
+          this.showleft=true;      
           this.showfirst22=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array4,this.predictions))
         {
           console.log("first")
           this.showright=false;
           this.showleft=true;
+         
           this.showfirst23=true;
           console.log("end")
+          this.show=false;
         }
         else if (this.arraysEqual(this.array5,this.predictions))
         {
-          this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst24=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array6,this.predictions))
         {
-          this.showleft=false;
+         
+          this.showright=false;
+          this.showleft=true;
           this.showfirst25=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array7,this.predictions))
         {
-          this.showleft=false;
+          console.log("no")
+          this.showright=false;
+          this.showleft=true;
           this.showfirst26=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array8,this.predictions))
         {
-          this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst27=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array9,this.predictions))
         {
-          this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst28=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array10,this.predictions))
         {
-          this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst29=true;
+          this.show=false;
         }
       
         else if (this.arraysEqual(this.array11,this.predictions))
         {
-          this.showleft=false;
+          this.showright=false;
+          this.showleft=true;
           this.showfirst30=true;
+          this.show=false;
         }
+      }
 
+      
+})
+      console.log("fin")
+    }
+   public async predict2(imageData: ImageData) {
+      
+     
+      console.log(imageData)
+        console.log("debut predict2")
 
+        const pred = await tf.tidy(()=>{
+          
+        let img = tf.fromPixels(imageData,3);
+        console.log(img);
+        img = tf.reverse(img, -1)
+        console.log("reverse",img)
+        img = img.reshape([1,140,140,3]); 
+        console.log("reshape")
+        img = tf.cast(img, 'float32');
+        console.log("cast")
+        console.log(img);
+        const output = this.model.predict(img) as any;
+        console.log(output)
+        // Save predictions on the component 
+        this.predictions = Array.from(output.dataSync());
+        console.log(this.predictions)
+    
+        
+
+   this.show=true;
+      while (this.show)
+        { 
         if (this.arraysEqual(this.array111,this.predictions))
         {    
           console.log("first1")
-          this.showright=true; 
-            
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst31=true;
+          this.show=false;
           console.log("end1")
         }
         else if (this.arraysEqual(this.array12,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst32=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array13,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst33=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array14,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          console.log("ooppps")
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst34=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array15,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst35=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array16,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst36=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array17,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          console.log("yes")
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst37=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array18,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst38=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array19,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst39=true;
+          this.show=false;
         }
         else if (this.arraysEqual(this.array20,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst40=true;
+          this.show=false;
         }
       
         else if (this.arraysEqual(this.array21,this.predictions))
         {
-          this.showleft=false;
-          this.showright=true; 
+          this.showright1=true;
+          this.showleft1=false;
           this.showfirst41=true;
+          this.show=false;
         }
 
-
+      }
       
       
 })
@@ -543,6 +629,7 @@ if (!this.toggle5)
     
       for (var i = 0; i < a.length; ++i) {
         if (a[i] !== b[i]) return false;
+      
       }
       return true;
     }
