@@ -215,6 +215,7 @@ chooseEmoNumber2(job) {
 
   start(imageData: ImageData)
   {
+    console.log("start:",imageData)
     
     this.showfirst10=false;
     this.showfirst11=false;
@@ -334,8 +335,8 @@ if (!this.toggle5)
     }, 1000);
     
        
-    this.predict(imageData)
-    this.predict2(imageData)
+   /*  this.predict(imageData)
+    this.predict2(imageData) */
     }
 
 
@@ -386,6 +387,8 @@ if (!this.toggle5)
         img = img.reshape([1,140,140,3]); 
         console.log("reshape")
         img = tf.cast(img, 'float32');
+
+
         console.log("cast")
         console.log(img);
         const output = this.model.predict(img) as any;
@@ -398,7 +401,7 @@ if (!this.toggle5)
         {
          if (this.arraysEqual(this.array1,this.predictions))
         {      
-          console.log("fffff")
+         
           this.showright=false;
           this.showleft=true;
           this.showfirst20=true;
@@ -423,12 +426,12 @@ if (!this.toggle5)
         }
         else if (this.arraysEqual(this.array4,this.predictions))
         {
-          console.log("first")
+          
           this.showright=false;
           this.showleft=true;
          
           this.showfirst23=true;
-          console.log("end")
+          
           this.show=false;
         }
         else if (this.arraysEqual(this.array5,this.predictions))
@@ -448,7 +451,7 @@ if (!this.toggle5)
         }
         else if (this.arraysEqual(this.array7,this.predictions))
         {
-          console.log("no")
+          
           this.showright=false;
           this.showleft=true;
           this.showfirst26=true;
@@ -519,12 +522,12 @@ if (!this.toggle5)
         { 
         if (this.arraysEqual(this.array111,this.predictions))
         {    
-          console.log("first1")
+          
           this.showright1=true;
           this.showleft1=false;
           this.showfirst31=true;
           this.show=false;
-          console.log("end1")
+          
         }
         else if (this.arraysEqual(this.array12,this.predictions))
         {
@@ -542,7 +545,7 @@ if (!this.toggle5)
         }
         else if (this.arraysEqual(this.array14,this.predictions))
         {
-          console.log("ooppps")
+          
           this.showright1=true;
           this.showleft1=false;
           this.showfirst34=true;
@@ -564,7 +567,7 @@ if (!this.toggle5)
         }
         else if (this.arraysEqual(this.array17,this.predictions))
         {
-          console.log("yes")
+          
           this.showright1=true;
           this.showleft1=false;
           this.showfirst37=true;

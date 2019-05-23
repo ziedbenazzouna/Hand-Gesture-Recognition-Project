@@ -20,6 +20,7 @@
               </div>
 <br/>
 <label *ngIf="showfirst17">Choisir les nombre de émoticônes</label>
+
               <div class="form-group2">
                   
                     <button *ngIf="showfirst12"  [style.background-color]="toggle1 ? 'blue' : 'red'" name="toggle1" (click)="chooseEmoNumber1()" type="submit"  >1</button>
@@ -104,12 +105,12 @@
                       <img  id="img2"  src="assets/images/9.png"   alt="image" *ngIf="showfirst40 && showfirst6 && !showleft1 && showright1">
                       <img  id="img2"  src="assets/images/question.png"   alt="image" *ngIf="showfirst41 && !showleft1  && showright1">
                 
-                      <img #imageInput  src="assets/images/img2.jpg"  id="box1" (load)="predict(imageInput)"  *ngIf="showfirst5">
-                      <img #imageInput src="assets/images/img4.jpg"  id="box2" (load)="predict2(imageInput)"  *ngIf="showfirst6"> 
+                  <!--     <img #imageInput  src="assets/images/img2.jpg"  id="box1" (load)="start(imageInput)"  *ngIf="showfirst5">
+                      <img #imageInput src="assets/images/img4.jpg"  id="box2" (load)="start(imageInput)"  *ngIf="showfirst6">  -->
 
-                      <!--  <canvas height="140px" width="140px" #imageInput  drawable id="box1" (newImage)="predict(imageInput)"  *ngIf="showfirst5"></canvas>
+                      <canvas  height="140px" width="140px"   drawable id="box1" (newImage)="predict($event)"  *ngIf="showfirst5"></canvas>
                       
-                      <canvas height="140px" width="140px" #imageInput drawable  id="box2" (newImage)="predict(imageInput)"  *ngIf="showfirst6"> </canvas> -->
+                      <canvas  height="140px" width="140px" drawable  id="box2" (newImage)="predict($event)"  *ngIf="showfirst6"> </canvas>
                     </div>
 
       

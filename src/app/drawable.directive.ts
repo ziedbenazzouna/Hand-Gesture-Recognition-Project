@@ -17,7 +17,8 @@ import {
     ctx: CanvasRenderingContext2D;
     ctx2: CanvasRenderingContext2D;
     canvas: HTMLCanvasElement;
-    img:HTMLImageElement;
+    video : HTMLVideoElement;
+ 
 
   
     @Output() newImage = new EventEmitter();
@@ -28,17 +29,35 @@ import {
       this.canvas = this.el.nativeElement as HTMLCanvasElement;
       this.ctx = this.canvas.getContext('2d');
       this.ctx2 = this.canvas.getContext('2d');
+      this.video = this.el.nativeElement as HTMLVideoElement;
       
+      let self = this;
+    this.video.addEventListener('play', function() {
+        
+        self.timerCallback();
+      }, false);
+    }
+
+    timerCallback() {
       
+      this.getImgData();
+      let self = this;
+      setTimeout(function() {
+          self.timerCallback();
+        }, 0);
     }
     
     @HostListener('mouseup', ['$event'])
   onUp(e) {
+    console.log("event",this.getImgData())
     this.newImage.emit(this.getImgData());
     console.log(this.getImgData())
   }
+
+
   
     getImgData(): ImageData {
+
     console.log("getImgData");
     console.log(this.canvas);
       this.ctx.drawImage(this.canvas,0,0, 140, 140);
@@ -46,6 +65,8 @@ import {
      let l = frame.data.length / 4;
 
      for (let i = 0; i < l; i++) {
+      
+
        let r = frame.data[i * 4 + 0];
        let g = frame.data[i * 4 + 1];
        let b = frame.data[i * 4 + 2];
@@ -55,9 +76,7 @@ import {
      }
      this.ctx2.putImageData(frame, 0,0);
      console.log(frame);
-     return  this.ctx2.getImageData(0, 0, 140, 140);
-    
-
+     return frame;
     }
 
     
