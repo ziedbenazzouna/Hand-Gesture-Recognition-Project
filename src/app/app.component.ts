@@ -17,11 +17,16 @@ export class AppComponent implements OnInit {
   predictions : any;
   predictedNumber: string;
 
-  private _minutes: number = 0;
+ /*  private _minutes: number = 0;
   private _secondes: number = 0;
   private _milliseconds: number = 0;
   private _totalSecondes: number = 0;
-  private _timer;
+  private _timer; */
+
+     timeBegan = null
+     timeStopped = null
+     stoppedDuration = 0
+     started = null;
 
   image : any;
  
@@ -118,10 +123,52 @@ export class AppComponent implements OnInit {
 
 
      show=true;
+     score1=0;
+     score2=0;
 
    
      
+     start2() {
+      if (this.timeBegan === null) {
+          this.timeBegan = new Date();
+      }
+      console.log(this.timeBegan);
+      if (this.timeStopped !== null) {
+          this.stoppedDuration += (<any>new Date() - this.timeStopped);
+      }
+      console.log(this.stoppedDuration);
+  
+      this.started = setInterval(this.clockRunning, 10);	
 
+      console.log(this.started);
+  }
+
+
+   stop() {
+    this.timeStopped = new Date();
+    clearInterval(this.started);
+}
+
+
+  clockRunning(){
+    
+    
+    let currentTime = new Date()
+    /* , timeElapsed = new Date(<any>currentTime - this.timeBegan - this.stoppedDuration) */
+        , timeElapsed = new Date(<any>currentTime )
+        
+        , min = timeElapsed.getUTCMinutes() 
+        , sec = timeElapsed.getUTCSeconds() 
+        , ms = timeElapsed.getUTCMilliseconds();
+        console.log(currentTime);
+       
+        console.log(timeElapsed);
+    document.getElementById("display-area").innerHTML = 
+      
+        (min > 9 ? min : "0" + min) + ":" + 
+        (sec > 9 ? sec : "0" + sec) + "." + 
+        (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
+};
     
 
 
@@ -216,6 +263,8 @@ chooseEmoNumber2(job) {
   start(imageData: ImageData)
   {
     console.log("start:",imageData)
+
+    this.start2();
     
     this.showfirst10=false;
     this.showfirst11=false;
@@ -327,24 +376,28 @@ if (!this.toggle5)
 }
 }
 
-    this._timer = setInterval(() => {
+   /*  this._timer = setInterval(() => {
       this._minutes = Math.floor(++this._totalSecondes / 60);
       this._secondes = (this._totalSecondes - this._minutes * 60) ;
-       
+       this._milliseconds = this._secondes *1000;
       
     }, 1000);
-    
+    this._timer = setInterval(() => {
+      
+       this._milliseconds ;
+      
+    }, 1); */
        
-   /*  this.predict(imageData)
-    this.predict2(imageData) */
+    this.predict(imageData)
+    this.predict2(imageData)
     }
 
 
 
     
-    stop() {
+    /* stop() {
       clearInterval(this._timer);
-    }
+    } */
 
     @ViewChild(DrawableDirective) canvas;
     
@@ -375,7 +428,7 @@ if (!this.toggle5)
     public async predict(imageData: ImageData) {
       
      
-      console.log(imageData)
+        console.log(imageData)
         console.log("debut")
 
         const pred = await tf.tidy(()=>{
@@ -487,7 +540,7 @@ if (!this.toggle5)
           this.show=false;
         }
       }
-
+           this.score1+=1;
       
 })
       console.log("fin")
@@ -604,7 +657,7 @@ if (!this.toggle5)
         }
 
       }
-      
+      this.score2+=1;
       
 })
       console.log("fin")

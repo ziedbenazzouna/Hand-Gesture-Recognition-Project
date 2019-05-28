@@ -3,11 +3,11 @@
 
     <div *ngIf="showfirst8" id="boxScore1">
         <h1>Score</h1>
-      <h1>0</h1>
+      <h1>{{score1}}</h1>
     </div>
     <div *ngIf="showfirst9" id="boxScore2">
-        <h1>Score</h1>
-        <h1>0</h1>
+        <h1>score</h1>
+        <h1>{{score2}}</h1>
     </div>
         <fieldset>
                 <legend *ngIf="showfirst19">Choisir les nombre de joueurs</legend>
@@ -68,9 +68,10 @@
                       </div>
                       <br/>
                       <div class="form-group4" *ngIf="showfirst7">
-                       <h2> <span class="label label-primary">{{_minutes}}</span> minutes
-                        <span class="label label-primary">{{_secondes}}</span> secondes</h2>
-                         
+                       <!-- <h2> <span class="label label-primary">{{_minutes}}</span> minutes
+                        <span class="label label-primary">{{_secondes}}</span> secondes
+                        <span class="label label-primary">{{_milliseconds}}</span> millisecondes</h2> -->
+                        <output id="display-area">00:00.000</output>
                       </div>
 
                   </fieldset>
@@ -105,12 +106,13 @@
                       <img  id="img2"  src="assets/images/9.png"   alt="image" *ngIf="showfirst40 && showfirst6 && !showleft1 && showright1">
                       <img  id="img2"  src="assets/images/question.png"   alt="image" *ngIf="showfirst41 && !showleft1  && showright1">
                 
-                  <!--     <img #imageInput  src="assets/images/img2.jpg"  id="box1" (load)="start(imageInput)"  *ngIf="showfirst5">
-                      <img #imageInput src="assets/images/img4.jpg"  id="box2" (load)="start(imageInput)"  *ngIf="showfirst6">  -->
+                     
+                      <img #imageInput  src="assets/images/img1.jpg"  id="box1" (load)="predict(imageInput)"  *ngIf="showfirst5">
+                      <img #imageInput src="assets/images/img3.jpg"  id="box2" (load)="predict2(imageInput)"  *ngIf="showfirst6"> 
 
-                      <canvas  height="140px" width="140px"   drawable id="box1" (newImage)="predict($event)"  *ngIf="showfirst5"></canvas>
+                     <!--  <canvas  height="140px" width="140px"   drawable id="box1" (newImage)="predict($event)"  *ngIf="showfirst5"></canvas>
                       
-                      <canvas  height="140px" width="140px" drawable  id="box2" (newImage)="predict($event)"  *ngIf="showfirst6"> </canvas>
+                      <canvas  height="140px" width="140px" drawable  id="box2" (newImage)="predict($event)"  *ngIf="showfirst6"> </canvas> -->
                     </div>
 
       
