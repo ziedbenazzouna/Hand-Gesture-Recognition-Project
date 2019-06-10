@@ -80,12 +80,6 @@ div.form-group5{
 }
 
 
-
-
-
-
-
-
 .divider{
     width:10px;
     height:auto;
@@ -124,8 +118,8 @@ fieldset{
     color: white;
     z-index: 1;
     position: absolute;
-    top:150px;
-    right: 58%;
+    top:30px;
+    right: 67%;
     border: 5px solid red;
     padding: 0px;
  
@@ -141,8 +135,7 @@ fieldset{
     right: 35%;
     border: 5px solid blue;
     padding: 0px;
-   
-   
+
 }
 
 
@@ -198,6 +191,10 @@ fieldset{
   
 }
 
+
+[hidden] {
+    display: none !important;
+  }
 
   
 

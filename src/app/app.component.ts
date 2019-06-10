@@ -115,6 +115,9 @@ export class AppComponent implements OnInit {
      showfirst40=false;
      showfirst41=false;
 
+     isHidden=true;
+
+
 
      showleft=false;
      showright=false;
@@ -132,15 +135,15 @@ export class AppComponent implements OnInit {
       if (this.timeBegan === null) {
           this.timeBegan = new Date();
       }
-      console.log(this.timeBegan);
+     
       if (this.timeStopped !== null) {
           this.stoppedDuration += (<any>new Date() - this.timeStopped);
       }
-      console.log(this.stoppedDuration);
+     
   
-      this.started = setInterval(this.clockRunning, 10);	
+      this.started = setInterval(<any>this.clockRunning, 10);	
 
-      console.log(this.started);
+     
   }
 
 
@@ -152,17 +155,16 @@ export class AppComponent implements OnInit {
 
   clockRunning(){
     
-    
     let currentTime = new Date()
-    /* , timeElapsed = new Date(<any>currentTime - this.timeBegan - this.stoppedDuration) */
+     /* , timeElapsed = new Date(<any>currentTime - this.timeBegan - this.stoppedDuration)  */
         , timeElapsed = new Date(<any>currentTime )
         
         , min = timeElapsed.getUTCMinutes() 
         , sec = timeElapsed.getUTCSeconds() 
         , ms = timeElapsed.getUTCMilliseconds();
-        console.log(currentTime);
        
-        console.log(timeElapsed);
+       
+      
     document.getElementById("display-area").innerHTML = 
       
         (min > 9 ? min : "0" + min) + ":" + 
@@ -282,6 +284,7 @@ chooseEmoNumber2(job) {
     this.showfirst5=true;
     this.showfirst6=false; 
   }
+
   else if ( this.toggle6==true)
   {
     this.showfirst5=true;
@@ -311,10 +314,11 @@ if ( !this.toggle1)
     this.imagesList[i] = {
       url: url,
       show: false
-    }
+    } 
 }
 
 }
+
 if (!this.toggle2)
 {
   for (let i = 0; i < 3; i++) {
@@ -390,6 +394,8 @@ if (!this.toggle5)
        
     this.predict(imageData)
     this.predict2(imageData)
+
+   
     }
 
 
@@ -399,7 +405,10 @@ if (!this.toggle5)
       clearInterval(this._timer);
     } */
 
-    @ViewChild(DrawableDirective) canvas;
+   /*  @ViewChild(DrawableDirective) canvas; */
+
+   @ViewChild("canvas")
+   public canvas: ElementRef;
     
     @ViewChild("video")
     public video: ElementRef;
@@ -647,6 +656,8 @@ if (!this.toggle5)
           this.showfirst40=true;
           this.show=false;
         }
+
+        
       
         else if (this.arraysEqual(this.array21,this.predictions))
         {
@@ -672,6 +683,16 @@ if (!this.toggle5)
             });
         }
     }
+
+    public capture() {
+      var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
+      this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+  }
+
+  public capture2() {
+    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 700, 700);
+    this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+}
 
     public arraysEqual(a, b) {
       if (a === b) return true;
