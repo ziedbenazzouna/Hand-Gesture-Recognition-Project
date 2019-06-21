@@ -20,8 +20,8 @@ export class AppComponent implements OnInit {
  /*  private _minutes: number = 0;
   private _secondes: number = 0;
   private _milliseconds: number = 0;
-  private _totalSecondes: number = 0;
-  private _timer; */
+  private _totalSecondes: number = 0;*/
+  private _timer; 
 
      timeBegan = null
      timeStopped = null
@@ -153,6 +153,9 @@ export class AppComponent implements OnInit {
 }
 
 
+
+
+
   clockRunning(){
     
     let currentTime = new Date()
@@ -240,8 +243,7 @@ chooseEmoNumber2(job) {
   choosePlayer1(job) {
     this.toggle6 = !this.toggle6;
     this.toggle7 = true;
-    /* this.showfirst5=true;
-    this.showfirst6=false; */
+    
     if (!this.toggle1 || !this.toggle2 || !this.toggle3 || !this.toggle4 || !this.toggle5)
     {
     this.toggle8 = false;
@@ -253,8 +255,7 @@ chooseEmoNumber2(job) {
     this.toggle7 = !this.toggle7;
     this.toggle6 = true;
     
-    /* this.showfirst5=true;
-    this.showfirst6=true; */
+   
     if (!this.toggle1 || !this.toggle2 || !this.toggle3 || !this.toggle4 || !this.toggle5)
     {
     this.toggle8 = false;
@@ -343,7 +344,7 @@ if (!this.toggle2)
 
 }
 
-if (!this.toggle3)
+if (!this.toggle3) 
 {
   let i= this.imagesList[Math.floor(Math.random()*DataTransferItemList.length)]
   for ( i = 0; i < 5; i++) {
@@ -392,8 +393,8 @@ if (!this.toggle5)
       
     }, 1); */
        
-    this.predict(imageData)
-    this.predict2(imageData)
+   // this.predict(imageData)
+    //this.predict2(imageData)
 
    
     }
@@ -433,15 +434,23 @@ if (!this.toggle5)
     }
 
     
-
+  
     public async predict(imageData: ImageData) {
-      
-     
-        console.log(imageData)
-        console.log("debut")
+      this.showfirst20=false;
+      this.showfirst21=false;
+      this.showfirst22=false;
+      this.showfirst23=false;
+      this.showfirst24=false;
+      this.showfirst25=false;
+      this.showfirst26=false;
+      this.showfirst27=false;
+      this.showfirst28=false;
+      this.showfirst29=false;
+      this.showfirst30=false;
 
-        const pred = await tf.tidy(()=>{
-          
+        console.log(imageData)
+        console.log("debut")      
+        const pred = await tf.tidy(()=>{    
         let img = tf.fromPixels(imageData,3);
         console.log(img);
         img = tf.reverse(img, -1)
@@ -458,7 +467,7 @@ if (!this.toggle5)
         // Save predictions on the component 
         this.predictions = Array.from(output.dataSync());
         console.log(this.predictions)
-    
+        this.show=true;
         while (this.show)
         {
          if (this.arraysEqual(this.array1,this.predictions))
@@ -468,6 +477,7 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst20=true;
           this.show=false;
+          this.score1+=1;
           
         }
         
@@ -478,6 +488,9 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst21=true;
           this.show=false;
+          this.score1+=1;
+
+          
         }
         else  if (this.arraysEqual(this.array3,this.predictions))
         {
@@ -485,6 +498,9 @@ if (!this.toggle5)
           this.showleft=true;      
           this.showfirst22=true;
           this.show=false;
+          this.score1+=1;
+
+         
         }
         else if (this.arraysEqual(this.array4,this.predictions))
         {
@@ -495,6 +511,8 @@ if (!this.toggle5)
           this.showfirst23=true;
           
           this.show=false;
+          this.score1+=1;
+          
         }
         else if (this.arraysEqual(this.array5,this.predictions))
         {
@@ -502,6 +520,8 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst24=true;
           this.show=false;
+          this.score1+=1;
+        
         }
         else if (this.arraysEqual(this.array6,this.predictions))
         {
@@ -510,6 +530,9 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst25=true;
           this.show=false;
+          this.score1+=1;
+
+        
         }
         else if (this.arraysEqual(this.array7,this.predictions))
         {
@@ -518,13 +541,18 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst26=true;
           this.show=false;
+          this.score1+=1;
+         
         }
         else if (this.arraysEqual(this.array8,this.predictions))
         {
+          console.log("ok")
           this.showright=false;
           this.showleft=true;
           this.showfirst27=true;
           this.show=false;
+          this.score1+=1;
+         
         }
         else if (this.arraysEqual(this.array9,this.predictions))
         {
@@ -532,6 +560,8 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst28=true;
           this.show=false;
+          this.score1+=1;
+         
         }
         else if (this.arraysEqual(this.array10,this.predictions))
         {
@@ -539,6 +569,8 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst29=true;
           this.show=false;
+          this.score1+=1;
+        
         }
       
         else if (this.arraysEqual(this.array11,this.predictions))
@@ -547,15 +579,29 @@ if (!this.toggle5)
           this.showleft=true;
           this.showfirst30=true;
           this.show=false;
+          
+      
         }
       }
-           this.score1+=1;
-      
+           
+        
 })
       console.log("fin")
+   
     }
    public async predict2(imageData: ImageData) {
       
+      this.showfirst31=false;
+      this.showfirst32=false;
+      this.showfirst33=false;
+      this.showfirst34=false;
+      this.showfirst35=false;
+      this.showfirst36=false;
+      this.showfirst37=false;
+      this.showfirst38=false;
+      this.showfirst39=false;
+      this.showfirst40=false;
+      this.showfirst41=false;
      
       console.log(imageData)
         console.log("debut predict2")
@@ -572,23 +618,25 @@ if (!this.toggle5)
         console.log("cast")
         console.log(img);
         const output = this.model.predict(img) as any;
-        console.log(output)
+        console.log(output);
         // Save predictions on the component 
         this.predictions = Array.from(output.dataSync());
-        console.log(this.predictions)
+        console.log(this.predictions);
     
         
 
-   this.show=true;
+      this.show=true;
+
       while (this.show)
         { 
         if (this.arraysEqual(this.array111,this.predictions))
         {    
-          
+         
           this.showright1=true;
           this.showleft1=false;
           this.showfirst31=true;
           this.show=false;
+          this.score2+=1;
           
         }
         else if (this.arraysEqual(this.array12,this.predictions))
@@ -597,6 +645,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst32=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array13,this.predictions))
         {
@@ -604,6 +653,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst33=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array14,this.predictions))
         {
@@ -612,6 +662,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst34=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array15,this.predictions))
         {
@@ -619,6 +670,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst35=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array16,this.predictions))
         {
@@ -626,6 +678,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst36=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array17,this.predictions))
         {
@@ -634,6 +687,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst37=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array18,this.predictions))
         {
@@ -641,6 +695,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst38=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array19,this.predictions))
         {
@@ -648,6 +703,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst39=true;
           this.show=false;
+          this.score2+=1;
         }
         else if (this.arraysEqual(this.array20,this.predictions))
         {
@@ -655,6 +711,7 @@ if (!this.toggle5)
           this.showleft1=false;
           this.showfirst40=true;
           this.show=false;
+          this.score2+=1;
         }
 
         
@@ -668,13 +725,13 @@ if (!this.toggle5)
         }
 
       }
-      this.score2+=1;
-      
+    
+    
 })
       console.log("fin")
     }
-    
 
+    
     public ngAfterViewInit() {
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
@@ -685,14 +742,19 @@ if (!this.toggle5)
     }
 
     public capture() {
+      this._timer = setInterval(() => {
       var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
       this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+    }, 5000); 
   }
 
   public capture2() {
-    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 700, 700);
+    this._timer = setInterval(() => {
+    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
     this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+  }, 5000); 
 }
+
 
     public arraysEqual(a, b) {
       if (a === b) return true;
@@ -705,11 +767,14 @@ if (!this.toggle5)
       // you might want to clone your array first.
     
       for (var i = 0; i < a.length; ++i) {
-        if (a[i] !== b[i]) return false;
-      
+        if (a[i] !== b[i]) return false; 
+         
       }
       return true;
     }
+
+   
+
     
    
 }
