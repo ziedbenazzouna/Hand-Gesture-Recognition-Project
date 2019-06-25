@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DrawableDirective } from './drawable.directive';
 import * as tf from '@tensorflow/tfjs';
-import { image } from '@tensorflow/tfjs';
+
 
 
 
@@ -17,10 +16,10 @@ export class AppComponent implements OnInit {
   predictions : any;
   predictedNumber: string;
 
- /*  private _minutes: number = 0;
+  private _minutes: number = 0;
   private _secondes: number = 0;
   private _milliseconds: number = 0;
-  private _totalSecondes: number = 0;*/
+  private _totalSecondes: number = 0;
   private _timer; 
 
      timeBegan = null
@@ -115,7 +114,7 @@ export class AppComponent implements OnInit {
      showfirst40=false;
      showfirst41=false;
 
-     isHidden=true;
+    
 
 
 
@@ -267,7 +266,7 @@ chooseEmoNumber2(job) {
   {
     console.log("start:",imageData)
 
-    this.start2();
+   // this.start2();
     
     this.showfirst10=false;
     this.showfirst11=false;
@@ -381,7 +380,7 @@ if (!this.toggle5)
 }
 }
 
-   /*  this._timer = setInterval(() => {
+    this._timer = setInterval(() => {
       this._minutes = Math.floor(++this._totalSecondes / 60);
       this._secondes = (this._totalSecondes - this._minutes * 60) ;
        this._milliseconds = this._secondes *1000;
@@ -391,7 +390,7 @@ if (!this.toggle5)
       
        this._milliseconds ;
       
-    }, 1); */
+    }, 1);
        
    // this.predict(imageData)
     //this.predict2(imageData)
@@ -406,7 +405,7 @@ if (!this.toggle5)
       clearInterval(this._timer);
     } */
 
-   /*  @ViewChild(DrawableDirective) canvas; */
+  
 
    @ViewChild("canvas")
    public canvas: ElementRef;

@@ -68,10 +68,10 @@
                       </div>
                       <br/>
                       <div class="form-group4" *ngIf="showfirst7">
-                       <!-- <h2> <span class="label label-primary">{{_minutes}}</span> minutes
+                       <h2> <span class="label label-primary">{{_minutes}}</span> minutes
                         <span class="label label-primary">{{_secondes}}</span> secondes
-                        <span class="label label-primary">{{_milliseconds}}</span> millisecondes</h2> -->
-                        <output id="display-area">00:00.000</output>
+                        <!-- <span class="label label-primary">{{_milliseconds}}</span> millisecondes --></h2>
+                       <!--  <output id="display-area">00:00.000</output> -->
                       </div>
 
                   </fieldset>
@@ -116,8 +116,8 @@
                       <!-- <canvas  height="140px" width="140px"   id="box2" (click)="capture2()"  *ngIf="showfirst6"> </canvas>  -->
 
                       <div></div>
-                      <canvas #canvas    width="140" height="140"></canvas>
-                      <div id="myDIV">
+                      <canvas  #canvas    width="140" height="140"></canvas>
+                      <div   >
                       <ul>
                         <li *ngFor="let c of captures">
                             <img  #imageInput src="{{ c }}" height="140" width="140" (load)="predict(imageInput)"  />                            
@@ -132,17 +132,6 @@
  
 </div>
 
-<script>
-
-  console.log("function")
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-
-</script>
 
 
 
