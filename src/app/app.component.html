@@ -113,15 +113,19 @@
 
                       <canvas  height="140px" width="140px"   id="box1"   (click)="capture()" *ngIf="showfirst5"></canvas>
                       
-                      <!-- <canvas  height="140px" width="140px"   id="box2" (click)="capture2()"  *ngIf="showfirst6"> </canvas>  -->
+                      <canvas  height="140px" width="140px"   id="box2" (click)="capture2()"  *ngIf="showfirst6"> </canvas> 
 
                       <div></div>
                       <canvas  #canvas    width="140" height="140"></canvas>
+                      <canvas  #canvas2    width="140" height="140"></canvas>
                       <div   >
                       <ul>
                         <li *ngFor="let c of captures">
                             <img  #imageInput src="{{ c }}" height="140" width="140" (load)="predict(imageInput)"  />                            
-                        </li>                    
+                        </li>   
+                        <li *ngFor="let c of captures2">
+                          <img  #imageInput src="{{ c }}" height="140" width="140" (load)="predict2(imageInput)"  />                            
+                      </li>                 
                     </ul>
                     
                   </div>
