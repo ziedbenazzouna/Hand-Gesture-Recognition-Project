@@ -91,6 +91,7 @@
                     <img  id="img1"  src="assets/images/8.png"   alt="image" *ngIf="showfirst28 && showleft  && !showright">
                     <img  id="img1"  src="assets/images/9.png"   alt="image" *ngIf="showfirst29 && showleft  && !showright">
                     <img  id="img1"  src="assets/images/question.png"   alt="image" *ngIf="showfirst30 && showleft  && !showright">
+
                       <video #video id="video" autoplay playsinline >
                         
                       </video>
@@ -116,9 +117,9 @@
                       <canvas  height="140px" width="140px"   id="box2" (click)="capture2()"  *ngIf="showfirst6"> </canvas> 
 
                       <div></div>
-                      <canvas  #canvas    width="140" height="140"></canvas>
-                      <canvas  #canvas2    width="140" height="140"></canvas>
-                      <div   >
+                      <canvas [hidden]="!show"  #canvas    width="140" height="140"></canvas>
+                      <canvas [hidden]="!show" #canvas2    width="140" height="140"></canvas>
+                      <div [hidden]="!show">
                       <ul>
                         <li *ngFor="let c of captures">
                             <img  #imageInput src="{{ c }}" height="140" width="140" (load)="predict(imageInput)"  />                            

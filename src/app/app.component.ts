@@ -259,6 +259,8 @@ export class AppComponent implements OnInit {
   start(imageData: ImageData) {
     console.log("start:", imageData)
 
+    this.show = false;
+    
     // this.start2();
 
     this.showfirst10 = false;
